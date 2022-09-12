@@ -10,17 +10,17 @@ import com.example.solvativedemo.R;
 import com.example.solvativedemo.model.Data;
 
 public class CustomHolder extends RecyclerView.ViewHolder {
-    private TextView api_model;
-    private TextView api_link;
+    private TextView artistId;
+    private TextView artistDisplay;
 
     public CustomHolder(@NonNull View itemView) {
         super(itemView);
-        api_model = (itemView).findViewById(R.id.api_model);
-        api_link = (itemView).findViewById(R.id.api_link);
+        artistId = (itemView).findViewById(R.id.artist_id);
+        artistDisplay = (itemView).findViewById(R.id.artist_display);
     }
 
     public void setData(Data model) {
-        api_model.setText("" + model.getArtistId());
-        api_link.setText(model.getArtistDisplay());
+        artistId.setText("" + model.getArtistId());
+        artistDisplay.setText(model.getArtistDisplay());
     }
 }
