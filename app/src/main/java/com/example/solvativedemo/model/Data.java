@@ -1,15 +1,12 @@
 package com.example.solvativedemo.model;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data{
+import java.util.List;
 
-    public Data(int id, String artistDisplay) {
-        this.artistId = id;
-        this.artistDisplay = artistDisplay;
-    }
+public class Data {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -28,7 +25,6 @@ public class Data{
     @SerializedName("alt_titles")
     @Expose
     private Object altTitles;
-
     @SerializedName("main_reference_number")
     @Expose
     private String mainReferenceNumber;
@@ -272,7 +268,6 @@ public class Data{
     @SerializedName("site_ids")
     @Expose
     private List<Object> siteIds = null;
-
     @SerializedName("source_updated_at")
     @Expose
     private String sourceUpdatedAt;
@@ -282,7 +277,10 @@ public class Data{
     @SerializedName("timestamp")
     @Expose
     private String timestamp;
-
+    public Data(int id, String artistDisplay) {
+        this.artistId = id;
+        this.artistDisplay = artistDisplay;
+    }
 
     public Integer getId() {
         return id;

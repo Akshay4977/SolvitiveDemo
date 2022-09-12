@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.solvativedemo.database.DatabaseHelper;
-import com.example.solvativedemo.ui.adapter_holder.CustomAdapter;
 import com.example.solvativedemo.R;
+import com.example.solvativedemo.database.DatabaseHelper;
 import com.example.solvativedemo.model.Data;
 import com.example.solvativedemo.model.MainModel;
 import com.example.solvativedemo.retrofit.APIClient;
 import com.example.solvativedemo.retrofit.APIInterface;
+import com.example.solvativedemo.ui.adapter_holder.CustomAdapter;
 
 import java.util.ArrayList;
 
@@ -46,21 +46,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         apiInterface = APIClient.getRetrofitClient().create(APIInterface.class);
-        if(!isInternetConnected()){
+        if (!isInternetConnected()) {
             button.setVisibility(View.VISIBLE);
-        } else  {
+        } else {
             callAPI();
         }
     }
 
-    private boolean isInternetConnected(){
+    private boolean isInternetConnected() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 
     private void setRecyclerView() {
-        if(button != null){
-            if(button.getVisibility() == View.VISIBLE){
+        if (button != null) {
+            if (button.getVisibility() == View.VISIBLE) {
                 button.setVisibility(View.GONE);
             }
         }
@@ -87,21 +87,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void addDataToDB(ArrayList<Data> data){
+    private void addDataToDB(ArrayList<Data> data) {
         databaseHelper = new DatabaseHelper(this);
-        for(Data item : data){
+        for (Data item : data) {
             databaseHelper.addContacts(item);
         }
         databaseCall();
     }
 
-    private void databaseCall(){
+    private void databaseCall() {
         databaseHelper = new DatabaseHelper(this);
         list = databaseHelper.listData();
-        if(list != null && list.size() > 0){
+        if (list != null && list.size() > 0) {
             setRecyclerView();
         } else {
-            Toast.makeText(this,"List is empty", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "List is empty", Toast.LENGTH_LONG).show();
         }
     }
 }
